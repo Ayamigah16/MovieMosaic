@@ -4,8 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using BlazorWebAppMovies.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContextFactory<BlazorWebAppMoviesContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("BlazorWebAppMoviesContext") ?? throw new InvalidOperationException("Connection string 'BlazorWebAppMoviesContext' not found.")));
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("BlazorWebAppMoviesContext") ?? 
+        throw new InvalidOperationException("Connection string 'BlazorWebAppMoviesContext' not found.")));
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
